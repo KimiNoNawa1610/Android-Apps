@@ -7,7 +7,9 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import java.text.NumberFormat;
+
 public class MainActivity extends AppCompatActivity {
     private TipCalculator tipCalc;
     public NumberFormat money = NumberFormat.getCurrencyInstance();
