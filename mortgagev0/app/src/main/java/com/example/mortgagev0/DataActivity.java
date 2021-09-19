@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class DataActivity extends AppCompatActivity {
     public void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
-
         setContentView( R.layout.activity_data);
     }
     public void updateView( ) {
@@ -53,18 +52,18 @@ public class DataActivity extends AppCompatActivity {
         try {
             float amount = Float.parseFloat( amountString );
             mortgage.setAmount( amount );
-
-            float rate= Float.parseFloat(rateString);
-            mortgage.setRate(rate);
-
+            float rate = Float.parseFloat( rateString );
+            mortgage.setRate( rate );
+            mortgage.setPreferences( this );
         } catch( NumberFormatException nfe ) {
             mortgage.setAmount( 100000.0f );
             mortgage.setRate( .035f );
         }
     }
     public void goBack( View v ) {
-        updateMortgageObject( );
+        updateMortgageObject();
         this.finish( );
+        overridePendingTransition(R.anim.fade_in_and_scale, 0 );
     }
 }
 
