@@ -1,4 +1,4 @@
-package com.example.tictactoe;
+package com.example.tictactoev2;
 
 public class TicTacToe {
     public static final int SIDE = 3;
@@ -77,5 +77,15 @@ public class TicTacToe {
         turn = 1;
     }
 
-
+    public String result(){
+        if(whoWon()>0){
+            return "Player "+whoWon()+" won";
+        }
+        else if(canNotPlay()){
+            return "It is a draw";
+        }
+        else{
+            return "Play!!";
+        }
+    }
 }
