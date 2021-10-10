@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import java.text.DecimalFormat;
+
 public class Mortgage {
     public final DecimalFormat MONEY = new DecimalFormat( "$#,##0.00" );
     private static final String PREFERENCE_AMOUNT = "amount";
@@ -26,6 +27,7 @@ public class Mortgage {
         setYears( pref.getInt( PREFERENCE_YEARS, 30 ) );
         setRate ( pref.getFloat( PREFERENCE_RATE, 0.035f ));
     }
+
     public void setAmount( float newAmount ) {
         if( newAmount >= 0 )
             amount = newAmount;
@@ -64,6 +66,7 @@ public class Mortgage {
     public String formattedTotalPayment( ) {
         return MONEY.format( totalPayment( ) );
     }
+
     // Write mortgage data to preferences
     public void setPreferences( Context context ) {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences( context );

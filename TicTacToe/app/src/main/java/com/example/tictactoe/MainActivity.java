@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         // setContentView( R.layout.activity_main );
         buildGuiByCode( );
     }
+
     public void buildGuiByCode( ) {
         // Get width of the screen
         Point size = new Point( );
@@ -48,7 +49,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void update( int row, int col ) {
+
         int play = tttGame.play( row, col );
+
         if( play == 1 ) {
             buttons[row][col].setText("X");
         }
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         if( tttGame.isGameOver( ) ) { // game over
             enableButtons(false);
         }
+
     }
 
     public void enableButtons( boolean enabled ) {

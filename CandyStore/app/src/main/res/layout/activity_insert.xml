@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/label_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="102dp"
+        android:text="@string/label_name"
+        android:textSize="24dp" />
+
+    <EditText
+        android:id="@+id/input_name"
+        android:layout_width="263dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/label_name"
+        android:layout_marginLeft="6dp"
+        android:layout_marginBottom="-2dp"
+        android:layout_toRightOf="@+id/label_name"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:orientation="horizontal"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/label_price"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_name"
+        android:layout_marginTop="70dp"
+        android:text="@string/label_price"
+        android:textSize="24dp" />
+
+    <EditText
+        android:id="@+id/input_price"
+        android:layout_width="263dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/label_name"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="-102dp"
+        android:layout_toRightOf="@+id/label_name"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:orientation="horizontal"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+    <Button android:layout_height="wrap_content" android:layout_width="wrap_content"
+        android:text="@string/button_add"
+        android:layout_marginTop="50dp"
+        android:id="@+id/button_add"
+        android:layout_below="@+id/label_price"
+        android:onClick="insert"
+        android:textSize="24dp"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_add"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="82dp"
+        android:onClick="goBack"
+        android:text="@string/button_back"
+        android:textSize="24dp" />
+
+</RelativeLayout>
