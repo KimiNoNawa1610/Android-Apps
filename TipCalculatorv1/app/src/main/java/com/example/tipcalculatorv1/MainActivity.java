@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         tipCalc = new TipCalculator( 0.17f, 100.0f );
         setContentView(R.layout.activity_main);
     }
+
     public void calculate(View v) {
         billEditText = (EditText) findViewById(R.id.amount_bill);
         tipEditText =  (EditText) findViewById(R.id.amount_tip_percent);
