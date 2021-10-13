@@ -65,13 +65,13 @@ public class UpdateActivity extends AppCompatActivity {
                 buttons[i] = new Button( this );
                 buttons[i].setText("UPDATE" );
                 buttons[i].setTextSize(19);
-                buttons[i].setId(10 * candy.getId( ) + 2 );
+                buttons[i].setId(candy.getId( ));
                 // set up event handling
                 buttons[i].setOnClickListener( bh );
                 // add the elements to grid
                 grid.addView( ids[i], width / 10, ViewGroup.LayoutParams.WRAP_CONTENT );
-                grid.addView( namesAndPrices[i][0], ( int ) ( width * 0.4 ), ViewGroup.LayoutParams.WRAP_CONTENT );
-                grid.addView( namesAndPrices[i][1], ( int ) ( width * 0.22 ), ViewGroup.LayoutParams.WRAP_CONTENT );
+                grid.addView( namesAndPrices[i][0], ( int ) ( width * 0.5 ), ViewGroup.LayoutParams.WRAP_CONTENT );
+                grid.addView( namesAndPrices[i][1], ( int ) ( width * 0.15 ), ViewGroup.LayoutParams.WRAP_CONTENT );
                 grid.addView( buttons[i], ( int ) ( width * 0.25  ), ViewGroup.LayoutParams.WRAP_CONTENT );
                 i++;
             }
@@ -83,6 +83,7 @@ public class UpdateActivity extends AppCompatActivity {
         public void onClick( View v ) {
             // retrieve name and price of the candy
             int candyId = v.getId( );
+            //Toast.makeText(UpdateActivity.this,Integer.toString(candyId),Toast.LENGTH_LONG);
             EditText nameET = ( EditText ) findViewById( 10 * candyId );
             EditText priceET = ( EditText ) findViewById( 10 * candyId + 1 );
             String name= nameET.getText( ).toString();
@@ -91,7 +92,7 @@ public class UpdateActivity extends AppCompatActivity {
             try {
                 double price = Double.parseDouble( priceString );
                 dbManager.updateById( candyId, name, price );
-                Toast.makeText( UpdateActivity.this, "Candy updated",
+                Toast.makeText( getApplicationContext(), "Candy updated",
                         Toast.LENGTH_SHORT ).show();
                 // update screen
                 updateView( );

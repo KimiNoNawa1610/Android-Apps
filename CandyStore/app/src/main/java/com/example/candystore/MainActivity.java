@@ -14,9 +14,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
@@ -38,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         dbManager=new DatabaseManager(this);
         scrollView= (ScrollView) findViewById(R.id.scrollView);
         total=0;
-        updateView();
+        updateView( );
         Point size = new Point( );
         getWindowManager().getDefaultDisplay( ).getSize( size );
         buttonWidth=size.x/2;
@@ -47,10 +44,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume( ) {
         super.onResume( );
         //YOUR CODE
-        updateView();
+        this.updateView( );
     }
 
     public void updateView( ) {
+        Toast.makeText( MainActivity.this, "Updating", Toast.LENGTH_LONG ).show( );
         ArrayList<Candy> candies = dbManager.selectAll();
         if( candies.size( ) > 0 ) {
             // remove subviews inside scrollView if necessary

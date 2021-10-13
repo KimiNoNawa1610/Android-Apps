@@ -1,7 +1,6 @@
 package com.example.candystore;
 
 import android.os.Bundle;
-import android.os.health.SystemHealthManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -25,6 +24,7 @@ public class DeleteActivity extends AppCompatActivity {
         }
         updateView( );
     }
+
     // Build a View dynamically with all the candies
     public void updateView( ) {
         ArrayList<Candy> candies = dbManager.selectAll();
@@ -32,10 +32,10 @@ public class DeleteActivity extends AppCompatActivity {
         ScrollView scrollView = new ScrollView( this );
         RadioGroup group = new RadioGroup( this );
         for ( Candy candy : candies ) {
-            System.out.println(candy.getId());
+            System.out.println(candy.getId()+";"+candy.getName()+";"+candy.getPrice());
             RadioButton rb = new RadioButton( this );
             rb.setId( candy.getId());
-            rb.setText(candy.getName());
+            rb.setText(candy.getId()+";"+candy.getName()+";"+candy.getPrice());
             group.addView( rb );
         }
         // set up event handling
@@ -68,7 +68,7 @@ public class DeleteActivity extends AppCompatActivity {
         public void onCheckedChanged( RadioGroup group, int checkedId ) {
             // delete candy from database
             dbManager.deleteById( checkedId );
-            Toast.makeText( DeleteActivity.this, "Candy deleted", Toast.LENGTH_SHORT ).show( );
+            Toast.makeText( DeleteActivity.this, "Candy deleted "+ checkedId, Toast.LENGTH_SHORT ).show( );
             // update screen
             updateView( );
         }

@@ -21,7 +21,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         // build sql create statement
         String sqlCreate = "create table " + TABLE_CANDY + "( " + ID;
         sqlCreate += " integer primary key autoincrement, " + NAME;
-
         sqlCreate += " text, " + PRICE + " real )" ;
         db.execSQL( sqlCreate );
     }

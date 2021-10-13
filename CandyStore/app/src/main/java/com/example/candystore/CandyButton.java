@@ -1,7 +1,6 @@
 package com.example.candystore;
 
 import android.content.Context;
-import android.widget.Button;
 
 public class CandyButton extends androidx.appcompat.widget.AppCompatButton {
     private Candy candy;
