@@ -17,6 +17,7 @@ public class GameStateFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_game_state,
                 container, false);
     }
+
     public void onStart( ) {
         super.onStart( );
         View fragmentView = getView();
@@ -24,4 +25,5 @@ public class GameStateFragment extends Fragment {
         MainActivity fragmentActivity = ( MainActivity )  getActivity( );
         gameStateTV.setText( fragmentActivity.getGame( ).currentIncompleteWord( ) );
     }
+
 }

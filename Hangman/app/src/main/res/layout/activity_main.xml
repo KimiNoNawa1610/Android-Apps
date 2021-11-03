@@ -12,9 +12,15 @@
 
     <LinearLayout android:orientation="vertical" android:layout_height="match_parent"
         android:layout_width="0dp" android:layout_weight="1">
-        <LinearLayout android:id="@+id/game_state" android:orientation="vertical"
-            android:layout_height="0dp" android:layout_width="match_parent"
-            android:layout_weight="1" android:background="@color/game_state_background"/>
+
+        <LinearLayout
+            android:id="@+id/game_state"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/game_state_background"
+            android:orientation="vertical" />
+
         <LinearLayout android:id="@+id/game_result" android:orientation="vertical"
             android:layout_height="0dp" android:layout_width="match_parent"
             android:layout_weight="1" android:background="@color/game_result_background"/>

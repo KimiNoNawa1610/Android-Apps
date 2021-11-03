@@ -3,12 +3,25 @@
     android:layout_height="match_parent" android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout style="@style/wrapCenterWeight1">
-        <TextView style="@style/textStyle" android:id="@+id/state_of_game"/>
+
+    <LinearLayout
+        style="@style/wrapCenterWeight1"
+        android:layout_width="409dp">
+
+        <TextView
+            android:id="@+id/state_of_game"
+            style="@style/textStyle" />
     </LinearLayout>
 
-    <LinearLayout style="@style/wrapCenterWeight1">
-        <EditText style="@style/textStyle" android:id="@+id/letter"
-            android:imeOptions="actionSend"/>
+    <LinearLayout
+        style="@style/wrapCenterWeight1"
+        android:layout_width="411dp">
+
+        <EditText
+            android:id="@+id/letter"
+            style="@style/editTextStyle"
+            android:layout_width="296dp"
+            android:imeOptions="actionSend"
+            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 </LinearLayout>
