@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">JSon</string>
+    <string name="button">CHECK WEATHER</string>
+
+    <string name="city">CITY</string>
+    <string name="cityIn">Please enter your city</string>
+
+    <string name="country">COUNTRY</string>
+    <string name="countryIn">Please enter your country</string>
+
+    <string name="weather">Weather will be display here</string>
+
+</resources>
