@@ -8,9 +8,12 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.w3c.dom.Text;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -24,45 +27,65 @@ public class MainActivity extends AppCompatActivity {
     private String key = "8d17e513af05aa2d9ae69646f4499d5a";
     private EditText cityText ;
     private EditText countryText;
-    String json;
+    private String json;
     //Do background here
     String baseUrl = STARTING_URL, cityString = city, keyName = KEY_NAME;
+    private RemoteDataReader rdr;
     //Create an object RemoteDataReader
-    RemoteDataReader rdr = new RemoteDataReader( baseUrl, cityString, keyName, key );
+    //RemoteDataReader rdr;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
+        EditText Editcity=(EditText) findViewById(R.id.cityinput);
+        EditText Editcountry=(EditText) findViewById(R.id.countryinput);
+        TextView weather= findViewById(R.id.weatherout);
         executor.execute(new Runnable() {
             @Override
             public void run() {
                 //Get the JSON string
-                json=rdr.getData();
+                rdr = new RemoteDataReader(baseUrl, city, keyName, key);
+                json = rdr.getData();
                 handler.post(new Runnable() {
+                    TemperatureParser parser = new TemperatureParser(json);
                     @Override
                     public void run() {
-                        TemperatureParser parser = new TemperatureParser( json );
-                        Log.w("MainActivity",rdr.getData());
-                        Log.w("MainActivity", String.valueOf(parser.getTemperatureK( ))+ DEGREE+"K");
+                        Log.w("MainActivity", rdr.getData());
+                        Log.w("MainActivity", String.valueOf(parser.getTemperatureK()) + DEGREE + "K");
+                    }
+                });
+            }
+        });
+        Editcountry.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                executor.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        String newcity=Editcity.getText().toString();
+                        String newcountry=Editcountry.getText().toString();
+                        city=newcity+","+newcountry;
+                        rdr = new RemoteDataReader(baseUrl, city, keyName, key);
+                        json = rdr.getData();
+                        TemperatureParser parser = new TemperatureParser(json);
+                        weather.setText(city+" is: "+String.valueOf(parser.getTemperatureF())+DEGREE+"F");
                     }
                 });
             }
         });
 
-    }
 
-    public void checkWeather(View v){
-        cityText =(EditText) findViewById(R.id.cityinput);
-        countryText =(EditText) findViewById(R.id.countryinput);
-        String tempcity=cityText.getText().toString();
-        String tempcountry=countryText.getText().toString();
-        this.city=tempcity+","+tempcountry;
-        TextView weathernow=findViewById(R.id.weatherout);
-        rdr = new RemoteDataReader( baseUrl, this.city, keyName, key );
-        String newjson=rdr.getData();
-        TemperatureParser parser = new TemperatureParser( newjson );
-        weathernow.setText(this.city+" "+String.valueOf(parser.getTemperatureF())+DEGREE+"F");
     }
 
 }

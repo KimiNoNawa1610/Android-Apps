@@ -20,12 +20,12 @@ public class RemoteDataReader {
         try {
             // Establish the connection
             URL url = new URL( urlString );
-            Log.w("MainActivity", urlString);
+            //Log.w("MainActivity", urlString);
             HttpURLConnection con = ( HttpURLConnection ) url.openConnection();
-            Log.w("MainActivity", "P2");
+            //Log.w("MainActivity", "P2");
             con.connect( );
             //con.getResponseCode();
-            Log.w("MainActivity", "P3");
+            //Log.w("MainActivity", "P3");
             int code = con.getResponseCode();
             if (code != 200) {
                 Log.w("MainActivity", String.valueOf(code));

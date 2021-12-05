@@ -1,4 +1,6 @@
 package com.example.json;
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,6 +27,7 @@ public class TemperatureParser {
         return ( int ) ( getTemperatureK( ) + ZERO_K + 0.5 );
     }
     public int getTemperatureF( ) {
-        return ( int ) ( ( getTemperatureK( ) + ZERO_K ) * 9 / 5 + 32 + 0.5 );
+        //Log.w("MainActivity",String.valueOf(getTemperatureK( )));
+        return ( int ) (( ( getTemperatureK() -273.15) * 9/5) + 32 +0.5);
     }
 }
